@@ -25,9 +25,6 @@ jobs:
       run: pytest
 
   push_to_docker_hub:
-    rules:
-      - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
-        when: never
     name: Push Docker image to Docker Hub
     runs-on: ubuntu-latest
     needs: tests
@@ -48,9 +45,6 @@ jobs:
           tags: korsakovpv/yamdb_final:latest
 
   deploy:
-    rules:
-      - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
-        when: never
     runs-on: ubuntu-latest
     needs: push_to_docker_hub
     steps:
@@ -61,7 +55,7 @@ jobs:
         username: ${{ secrets.USER }}
         key: ${{ secrets.SSH_KEY }}
         script: |
-            cd yamdb
+            cd yamdb_final
             sudo docker-compose pull web
             sudo docker-compose up --force-recreate -d web
 
@@ -74,4 +68,4 @@ jobs:
       with:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
-        message: ${{ github.workflow }} успешно выполнен! В ветке ${{CI_MERGE_REQUEST_TARGET_BRANCH_NAME}}
+        message: ${{ github.workflow }} успешно выполнен!
