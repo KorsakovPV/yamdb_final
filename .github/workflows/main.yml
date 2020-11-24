@@ -48,22 +48,23 @@ jobs:
           tags: korsakovpv/yamdb_final:latest
 
   deploy:
-    rules:
-      - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
+
         when: never
         runs-on: ubuntu-latest
         needs: push_to_docker_hub
         steps:
         - name: executing remote ssh commands to deploy
-          uses: appleboy/ssh-action@master
-          with:
-            host: ${{ secrets.HOST }}
-            username: ${{ secrets.USER }}
-            key: ${{ secrets.SSH_KEY }}
-            script: |
-                cd yamdb
-                sudo docker-compose pull web
-                sudo docker-compose up --force-recreate -d web
+          rules:
+            - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
+              uses: appleboy/ssh-action@master
+              with:
+                host: ${{ secrets.HOST }}
+                username: ${{ secrets.USER }}
+                key: ${{ secrets.SSH_KEY }}
+                script: |
+                    cd yamdb
+                    sudo docker-compose pull web
+                    sudo docker-compose up --force-recreate -d web
 
   send_message:
     runs-on: ubuntu-latest
