@@ -19,7 +19,7 @@ yamdb_final
 
 Клонируйте репозиторий на локальную машину.
 ```
-git clone https://github.com/KorsakovPV/infra_sp2
+git clone https://github.com/KorsakovPV/yamdb_final
 ```
 В корневой папке находится файл .env.template, в котором описаны все нужные переменные и их примерные значения. По образу и подобию необходимо создать файл .env и заполнить его своими значениями.
 
