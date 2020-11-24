@@ -45,7 +45,7 @@ jobs:
           tags: korsakovpv/yamdb_final:latest
     rules:
       - if: '$CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "master"'
-        when: never
+        when: always
 
   deploy:
     runs-on: ubuntu-latest
