@@ -2,7 +2,9 @@
 
 [![Yamdb-app workflow](https://github.com/KorsakovPV/yamdb_final/workflows/Yamdb-app_workflow/badge.svg)](https://github.com/KorsakovPV/yamdb_final/actions)
 
-![YAMDB banner](/static/%D0%91%D0%B5%D0%B7%20%D0%B8%D0%BC%D0%B5%D0%BD%D0%B8-1.jpg)
+![YAMDB banner](https://github.com/KorsakovPV/yamdb_final/blob/master/static/logo.jpg)
+
+ Основан на проекте api_yamdb (https://github.com/KorsakovPV/api_yamdb/) + CI/CD
 
 # REST API для сервиса YaMDb — базы отзывов о фильмах, книгах и музыке. (Совместный проект студентов Яндекс.Практикум)
 

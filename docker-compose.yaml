@@ -23,6 +23,6 @@ services:
       - ./static:/static
 
     ports:
-      - "80:80"
+      - "80:8000"
     depends_on:
       - web
